@@ -1,9 +1,10 @@
-import Navbar from "../SharedItems/Navbar";
+"use-client"
+import Banner from "./Banner";
 
 const HomeSection = () => {
     return (
         <div>
-            {/* <Navbar/> */}
+            <Banner/>
         </div>
     );
 };
