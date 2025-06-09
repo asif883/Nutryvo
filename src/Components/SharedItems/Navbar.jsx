@@ -18,8 +18,8 @@ const Navbar = () => {
 
 
   return (
-    <div>
-      <div className="navbar shadow-md px-4 py-3 fixed top-0 w-full z-50">
+    <div className="shadow-md p-2 fixed top-0 w-full z-50">
+      <div className="max-w-7xl mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>
           <Link
             href="/"
-            className="font-palyFair text-3xl font-bold text-green-600 tracking-wide"
+            className="font-palyFair text-4xl font-bold text-green-600 tracking-wide"
           >
             Nutryvo
           </Link>
