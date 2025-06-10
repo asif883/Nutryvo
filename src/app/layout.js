@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Nutryvo – Your Smart Companion for Daily Wellness",
   description: "",
-  icons: ""
+  icons: "/assets/nutryvo.logo.png"
 };
 
 export default function RootLayout({ children }) {
