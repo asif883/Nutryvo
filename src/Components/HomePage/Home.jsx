@@ -1,6 +1,7 @@
 "use-client"
 import Banner from "./Banner";
 import HealthyMove from "./HealthyMove";
+import ImproveLife from "./ImproveLife";
 import OurService from "./OurService";
 
 const HomeSection = () => {
@@ -9,6 +10,7 @@ const HomeSection = () => {
             <Banner/>
             <OurService/>
             <HealthyMove/>
+            <ImproveLife/>
         </div>
     );
 };
