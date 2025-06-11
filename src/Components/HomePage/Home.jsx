@@ -4,6 +4,7 @@ import HealthyMove from "./HealthyMove";
 import ImproveLife from "./ImproveLife";
 import OurService from "./OurService";
 import Plans from "./Plans";
+import Review from "./Review";
 
 const HomeSection = () => {
     return (
@@ -11,8 +12,9 @@ const HomeSection = () => {
             <Banner/>
             <OurService/>
             <HealthyMove/>
-            <ImproveLife/>
             <Plans/>
+            <ImproveLife/>
+            <Review/>
         </div>
     );
 };
