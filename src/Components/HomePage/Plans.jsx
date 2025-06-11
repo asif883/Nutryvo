@@ -7,7 +7,9 @@ const plans = [
     "billingCycle": "PER MONTH",
     "features": [
       "Body Hand and Foot Massage",
-      "Spa Therapy"
+      "Spa Therapy",
+      "Access to Steam Room",
+      "Free Herbal Tea",  
     ],
     "isPopular": false
   },
@@ -19,7 +21,8 @@ const plans = [
       "Body Hand and Foot Massage",
       "Spa Therapy",
       "Spa Therapy with Manicure",
-      "Nail Cutting and Styling"
+      "Nail Cutting and Styling",
+      "Free Herbal Tea"
     ],
     "isPopular": true
   },
@@ -32,7 +35,8 @@ const plans = [
       "Spa Therapy",
       "Spa Therapy with Manicure",
       "Nail Cutting and Styling",
-      "Hair Coloring"
+      "Hair Coloring",
+      "Free Herbal Tea"
     ],
     "isPopular": false
   }
@@ -44,7 +48,7 @@ const plans = [
 const Plans = () => {
   return (
     <div
-      className="relative mt-16 md:mt-20 lg:mt-32 h-[700px] bg-fixed"
+      className="relative mt-16 md:mt-20 lg:mt-32 h-[750px] bg-fixed"
       style={{ backgroundImage: `url(/assets/plan-background.jpg)`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
     <div className="absolute inset-0 bg-black/60"></div>

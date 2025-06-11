@@ -10,11 +10,12 @@ import SectionTitle from "../SharedItems/SectionTitle";
 const HealthyChoices = [
   {
     id: 1,
-    image: "https://images.everyplate.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/gr0/18+Tips+For+Eating+On+Budget+EP/budget3.webp",
-    img: "/assets/portfolio-custom-icon-4.png",
-    title: "Wholesome Meals",
-    description: "Fuel your body with balanced meals that support energy and overall daily wellness."
+    image: "https://cdn.peoffice.co.uk/wp-content/uploads/family-jogging-together-for-active-lifestyle.jpg",
+    img: "/assets/portfolio-custom-icon-6.png",
+    title: "Active Lifestyle",
+    description: "Move regularly with light exercises that boost strength, energy, and everyday fitness."
   },
+ 
   {
     id: 2,
     image: "https://rockytopsportsworld.com/wp-content/uploads/2016/06/Young-woman-drinking-water-with-the-sun-in-the-background-768x513.jpg",
@@ -29,12 +30,12 @@ const HealthyChoices = [
     title: "Sleep Better",
     description: "Get quality sleep every night to restore energy and improve overall mental health."
   },
-  {
+ {
     id: 4,
-    image: "https://cdn.peoffice.co.uk/wp-content/uploads/family-jogging-together-for-active-lifestyle.jpg",
-    img: "/assets/portfolio-custom-icon-6.png",
-    title: "Active Lifestyle",
-    description: "Move regularly with light exercises that boost strength, energy, and everyday fitness."
+    image: "https://images.everyplate.com/w_3840,q_auto,f_auto,c_limit,fl_lossy/hellofresh_website/us/landing-pages/gr0/18+Tips+For+Eating+On+Budget+EP/budget3.webp",
+    img: "/assets/portfolio-custom-icon-4.png",
+    title: "Wholesome Meals",
+    description: "Fuel your body with balanced meals that support energy and overall daily wellness."
   }
 ];
 

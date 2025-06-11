@@ -2,6 +2,7 @@
 import Banner from "./Banner";
 import HealthyMove from "./HealthyMove";
 import ImproveLife from "./ImproveLife";
+import LatestNews from "./LatestNews";
 import OurService from "./OurService";
 import Plans from "./Plans";
 import Review from "./Review";
@@ -15,6 +16,7 @@ const HomeSection = () => {
             <Plans/>
             <ImproveLife/>
             <Review/>
+            <LatestNews/>
         </div>
     );
 };
