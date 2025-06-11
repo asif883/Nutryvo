@@ -6,6 +6,7 @@ import LatestNews from "./LatestNews";
 import OurService from "./OurService";
 import Plans from "./Plans";
 import Review from "./Review";
+import ClientsPartnersAndOffers from "./WhatWeOffer";
 
 const HomeSection = () => {
     return (
@@ -13,6 +14,7 @@ const HomeSection = () => {
             <Banner/>
             <OurService/>
             <HealthyMove/>
+            <ClientsPartnersAndOffers/>
             <Plans/>
             <ImproveLife/>
             <Review/>
