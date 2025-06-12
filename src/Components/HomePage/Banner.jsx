@@ -45,11 +45,11 @@ const Banner = () => {
       slidesPerView={1}
       pagination={{ clickable: true }}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
-      className="h-[400px] lg:h-[650px] z-10"
+      className="h-[400px] lg:h-[680px] z-10"
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
     >
       {bannerData.map((slide, index) => (
-        <SwiperSlide key={index} className="relative">
+        <SwiperSlide key={index} className="relative pt-16">
           <div className="absolute w-full h-full bg-gradient-to-l from-transparent to-black bg-opacity-50 text-white">
             <motion.div
               key={activeIndex}

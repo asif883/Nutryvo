@@ -1,4 +1,4 @@
-"use-client"
+"use client"
 import '../../CSS/font.css'
 const SectionTitle = ({heading , subHeading}) => {
     return (
