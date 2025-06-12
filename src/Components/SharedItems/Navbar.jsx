@@ -18,7 +18,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="p-1 w-full z-50">
+    <div className="p-1 w-full z-50 fixed shadow bg-white">
       <div className="max-w-7xl mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -86,9 +86,9 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <a className="btn bg-green-500 text-white hover:bg-green-600 transition px-5 rounded-full font-semibold">
+          <Link href={'/login'} className="btn bg-green-500 text-white hover:bg-green-600 transition px-5 rounded-full font-semibold">
             Join Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>
