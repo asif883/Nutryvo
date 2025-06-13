@@ -48,7 +48,7 @@ const onSubmit = async (data) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
-      <div className="bg-white mt-8 p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-white mt-16 p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Welcome to Nutryvo</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

@@ -2,7 +2,6 @@
 
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 
 
@@ -21,7 +20,7 @@ const onSubmit = async (data) => {
   const userInfo = { name, email, password };
 
   try {
-    const res = await fetch('http://localhost:3000/api/signup', {
+    const res = await fetch('https://nutryvo.vercel.app/api/signup', {
       method: "POST",
       body: JSON.stringify(userInfo),
       headers: {
