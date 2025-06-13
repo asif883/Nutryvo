@@ -1,5 +1,6 @@
 import { mongoDB } from "@/lib/mongoDB";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   const newUser = await request.json();
@@ -10,7 +11,7 @@ export const POST = async (request) => {
 
     const exist = await userCollection.findOne({ email: newUser.email });
     if (exist) {
-      return Response.json({ message: "User already exists" }, { status: 409 });
+      return NextResponse.json({ message: "User already exists" }, { status: 409 });
     }
 
     // ✅ Hash the password before storing
@@ -21,9 +22,9 @@ export const POST = async (request) => {
       password: hashedPassword,
     });
 
-    return Response.json({ message: "User Created" }, { status: 200 });
+    return NextResponse.json({ message: "User Created" }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return Response.json({ message: "Something Went wrong" }, { status: 500 });
+    return NextResponse.json({ message: "Something Went wrong" }, { status: 500 });
   }
 };
