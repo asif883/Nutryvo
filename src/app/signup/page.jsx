@@ -1,5 +1,6 @@
 "use client"
 
+import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 
@@ -12,13 +13,46 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-     const name = data.name 
-     const email = data.email 
-     const password = data.password 
-     const userInfo = {name ,email , password}
-     console.log(userInfo);
-  };
+
+
+const onSubmit = async (data) => {
+  const { name, email, password } = data;
+  const userInfo = { name, email, password };
+
+  try {
+    const res = await fetch('http://localhost:3000/api/signup', {
+      method: "POST",
+      body: JSON.stringify(userInfo),
+      headers: {
+        "content-type": "application/json"
+      }
+    });
+
+    const result = await res.json();
+    if (res.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Account Created!',
+        text: 'You have successfully signed up!',
+        confirmButtonColor: '#00A63E'
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: result.message || 'Something went wrong!',
+        confirmButtonColor: '#d33'
+      });
+    }
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Network Error',
+      text: error.message || 'Please try again later.',
+      confirmButtonColor: '#d33'
+    });
+  }
+};
 
 
 

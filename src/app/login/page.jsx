@@ -3,11 +3,8 @@
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-// import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import { app } from "../firebase"; // make sure to initialize firebase in this file
-
-// const auth = getAuth(app);
-// const googleProvider = new GoogleAuthProvider();
+import {signIn} from "next-auth/react"
+import Swal from "sweetalert2";
 
 const Login = () => {
 
@@ -17,23 +14,37 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-     
-    //  const email = data.email 
-    //  const password = data.password 
-    //  const userInfo = { email, password}
-    //  console.log(userInfo);
-  };
+const onSubmit = async (data) => {
+  const email = data.email;
+  const password = data.password;
 
-//   const handleGoogleLogin = async () => {
-//     try {
-//       await signInWithPopup(auth, googleProvider);
-//       alert("Google Login Successful!");
-//     } catch (error) {
-//       console.error("Google Login Error", error.message);
-//       alert("Google Login failed.");
-//     }
-//   };
+  const resp = await signIn("credentials", {
+    email,
+    password,
+    redirect: false,
+  });
+
+  if (resp?.ok) {
+    Swal.fire({
+      icon: "success",
+      title: "Login Successful!",
+      showConfirmButton: false,
+      timer: 1000,
+    });
+
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Login Failed",
+      text: "Invalid email or password. Please try again!",
+    });
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
