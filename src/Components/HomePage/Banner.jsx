@@ -49,7 +49,7 @@ const Banner = () => {
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
     >
       {bannerData.map((slide, index) => (
-        <SwiperSlide key={index} className="relative pt-16">
+        <SwiperSlide key={index} className="relative pt-10">
           <div className="absolute w-full h-full bg-gradient-to-l from-transparent to-black bg-opacity-50 text-white">
             <motion.div
               key={activeIndex}
