@@ -3,6 +3,7 @@
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
+import Link from 'next/link';
 
 
 const Login = () => {
@@ -58,10 +59,10 @@ const onSubmit = async (data) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Welcome to Nutryvo</h2>
+      <div className="bg-white mt-16 p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Create an account</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label className="block font-medium mb-1">Name</label>
             <input
@@ -96,23 +97,15 @@ const onSubmit = async (data) => {
 
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300 cursor-pointer"
           >
-            Login
+            Sign Up
           </button>
         </form>
 
-        <div className="mt-6 flex items-center justify-center">
-          <span className="text-gray-600">or</span>
-        </div>
+       <p className='mt-5 font-medium text-gray-700'>Already have an account? Please <Link className='font-bold underline' href={'/login'}>Login</Link></p>
 
-        <button
-        //   onClick={handleGoogleLogin}
-          className="mt-4 w-full flex items-center justify-center gap-3 border py-2 rounded-lg hover:bg-gray-100 transition"
-        >
-          <FcGoogle className="text-xl" />
-          <span>Continue with Google</span>
-        </button>
+        
       </div>
     </div>
   );

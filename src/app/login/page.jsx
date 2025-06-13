@@ -48,10 +48,10 @@ const onSubmit = async (data) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+      <div className="bg-white mt-8 p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Welcome to Nutryvo</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label className="block font-medium mb-1">Email</label>
             <input
@@ -76,18 +76,18 @@ const onSubmit = async (data) => {
 
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300 cursor-pointer"
           >
             Login
           </button>
         </form>
-        <p>New here? Please <Link href={'/signup'} className="underline">Create a account</Link></p>
+        <p className="mt-3 text-gray-700">New here? Please <Link href={'/signup'} className="underline text-green-800 font-semibold">Create an account</Link></p>
         <div className="mt-6 flex items-center justify-center">
           <span className="text-gray-600">or</span>
         </div>
 
         <button
-        //   onClick={handleGoogleLogin}
+          
           className="mt-4 w-full flex items-center justify-center gap-3 border py-2 rounded-lg hover:bg-gray-100 transition"
         >
           <FcGoogle className="text-xl" />
