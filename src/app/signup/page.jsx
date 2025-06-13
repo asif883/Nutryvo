@@ -1,13 +1,8 @@
 "use client"
 
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-// import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import { app } from "../firebase"; // make sure to initialize firebase in this file
 
-// const auth = getAuth(app);
-// const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
 
@@ -18,22 +13,14 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-     
-    //  const email = data.email 
-    //  const password = data.password 
-    //  const userInfo = { email, password}
-    //  console.log(userInfo);
+     const name = data.name 
+     const email = data.email 
+     const password = data.password 
+     const userInfo = {name ,email , password}
+     console.log(userInfo);
   };
 
-//   const handleGoogleLogin = async () => {
-//     try {
-//       await signInWithPopup(auth, googleProvider);
-//       alert("Google Login Successful!");
-//     } catch (error) {
-//       console.error("Google Login Error", error.message);
-//       alert("Google Login failed.");
-//     }
-//   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
@@ -41,6 +28,16 @@ const Login = () => {
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Welcome to Nutryvo</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label className="block font-medium mb-1">Name</label>
+            <input
+              {...register("name", { required: "Name is required" })}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              type="text"
+              placeholder="Enter Your Name"
+            />
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          </div>
           <div>
             <label className="block font-medium mb-1">Email</label>
             <input
@@ -70,7 +67,7 @@ const Login = () => {
             Login
           </button>
         </form>
-        <p>New here? Please <Link href={'/signup'} className="underline">Create a account</Link></p>
+
         <div className="mt-6 flex items-center justify-center">
           <span className="text-gray-600">or</span>
         </div>
