@@ -19,9 +19,9 @@ const onSubmit = async (data) => {
   const password = data.password;
 
   const resp = await signIn("credentials", {
+    redirect: false,
     email,
     password,
-    redirect: false,
   });
 
   if (resp?.ok) {

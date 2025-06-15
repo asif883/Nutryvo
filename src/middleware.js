@@ -1,15 +1,19 @@
 import { NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-const user = false;
+export async function middleware(request) {
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  });
 
-export const middleware = (request) => {
-  if(!user){
-    return NextResponse.redirect(new URL('/login' , request.url))
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
-    matcher : ['/dashboard']
-}
+  matcher: ["/dashboard"],
+};

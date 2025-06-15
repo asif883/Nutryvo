@@ -20,7 +20,7 @@ const onSubmit = async (data) => {
   const userInfo = { name, email, password };
 
   try {
-    const res = await fetch('https://nutryvo.vercel.app/api/signup', {
+    const res = await fetch('http://localhost:3000/api/signup', {
       method: "POST",
       body: JSON.stringify(userInfo),
       headers: {
