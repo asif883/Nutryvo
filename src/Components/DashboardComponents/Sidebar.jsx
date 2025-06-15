@@ -4,17 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CiLogout } from "react-icons/ci";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { FaUserCircle } from "react-icons/fa";
+import { FaHome, FaUserCircle } from "react-icons/fa";
 import { MdRestaurantMenu, MdOutlineManageAccounts } from "react-icons/md";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { TbTruckDelivery, TbActivityHeartbeat } from "react-icons/tb";
-import { PiArrowCircleDownRightDuotone, PiNotePencilDuotone } from "react-icons/pi";
+import { PiNotePencilDuotone } from "react-icons/pi";
 import { useAuth } from "@/app/hooks/useAuth";
 
 const Routes = [
   {
     id: 1,
-    label: "Dashboard",
+    label: "Overview",
     icon: <LuLayoutDashboard />,
     link: "/dashboard/overview",
   },
@@ -50,16 +50,10 @@ const Routes = [
   },
   {
     id: 7,
-    label: "Admin Panel",
-    icon: <MdOutlineManageAccounts />,
-    link: "/dashboard/admin",
-  },
-  {
-    id: 8,
-    label: "Feedback",
-    icon: <PiNotePencilDuotone />,
-    link: "/dashboard/feedback",
-  },
+    label: "Home",
+    icon: <FaHome/>,
+    link: "/",
+  }
 ];
 
 const Sidebar = () => {
@@ -72,7 +66,7 @@ const Sidebar = () => {
       <div className="text-center border-b border-gray-300 pb-4">
         <Link
           href="/"
-          className="text-3xl font-extrabold text-green-600 tracking-wide hover:text-green-500 transition"
+          className="text-3xl font-bold text-green-600 tracking-wide hover:text-green-500 transition"
         >
           Nutryvo
         </Link>
@@ -84,10 +78,10 @@ const Sidebar = () => {
           <Link
             key={route.id}
             href={route.link}
-            className={`flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition duration-200 border border-green-300 ${
+            className={`flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition duration-200 border border-green-200 ${
               pathname === route.link
-                ? "bg-green-100 text-green-600 shadow-md"
-                : "text-gray-700 hover:"
+                ? "bg-green-100 text-green-600 shadow-md border-0"
+                : "text-gray-700 hover:bg-green-100 hover:border-0"
             }`}
           >
             <span className="text-xl">{route.icon}</span>
@@ -98,7 +92,7 @@ const Sidebar = () => {
         {/* Logout Button */}
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
-          className="border border-green-300 flex items-center gap-3 px-5 py-3 rounded-xl text-gray-700 font-medium w-full hover:bg-red-100 hover:text-red-600 hover:border-0 transition duration-200 cursor-pointer"
+          className="border border-green-200 flex items-center gap-3 px-5 py-3 rounded-xl text-gray-700 font-medium w-full hover:bg-red-100 hover:text-red-600 hover:border-0 transition duration-200 cursor-pointer"
         >
           <CiLogout className="text-xl" />
           Logout
