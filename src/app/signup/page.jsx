@@ -16,8 +16,8 @@ const Login = () => {
 
 
 const onSubmit = async (data) => {
-  const { name, email, password } = data;
-  const userInfo = { name, email, password };
+  const { name, email, password , role = "member" } = data;
+  const userInfo = { name, email, password, role };
 
   try {
     const res = await fetch('http://localhost:3000/api/signup', {

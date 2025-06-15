@@ -18,7 +18,8 @@ const Navbar = () => {
         { id: 7, name: "Contact", route: "/contact" }
     ];
 
-
+   if(pathname.includes('/dashboard')) 
+    return 
   return (
     <div className="p-1 w-full z-50 fixed shadow bg-white">
       <div className="max-w-7xl mx-auto navbar ">
