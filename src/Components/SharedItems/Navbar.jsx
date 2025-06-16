@@ -2,10 +2,12 @@
 import Link from "next/link";
 import '../../CSS/font.css'
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
+import { FaRegUserCircle } from "react-icons/fa";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Navbar = () => {
-    const { data: session, status } = useSession();
+    // const { data: session, status } = useSession();
 
     const pathname = usePathname();
 
@@ -90,24 +92,13 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          
-          {
-            status === "loading" ?
-            <><span className="loading loading-dots loading-md text-success"></span></> 
-            :
-            <>
-            {
-             session ? 
-             <> 
-               <Link href={'/dashboard/profile'} className="btn bg-green-500 text-white hover:bg-green-600 transition px-5 rounded-full font-semibold">Profile</Link>
-             </>
-             :
-            <Link href={'/login'} className="btn bg-green-500 text-white hover:bg-green-600 transition px-5 rounded-full font-semibold">
-                Join Us
+           <Link href={'/dashboard/profile'} className="mr-4 text-green-600">
+                <FaRegUserCircle size={22}/>
             </Link>
-            }
-            </>
-          }
+            <Link href={'/dashboard/cart'} className="text-green-600">
+                <TiShoppingCart size={24}/>
+            </Link>
+
         </div>
       </div>
     </div>
