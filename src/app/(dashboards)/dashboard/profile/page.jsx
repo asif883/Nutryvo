@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { FaCamera } from "react-icons/fa";
+import Loading from "@/Components/SharedItems/Loading";
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
@@ -18,7 +19,7 @@ const ProfilePage = () => {
   };
 
   if (status === "loading") {
-    return <p className="text-center mt-10 text-gray-600">Loading profile...</p>;
+    return <p className="text-center mt-10 text-gray-600"><Loading/> </p>;
   }
 
   return (
