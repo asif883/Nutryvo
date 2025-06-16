@@ -15,19 +15,19 @@ const bannerData = [
     title: "Eat Smart, Live Strong",
     description:
       "Personalized nutrition plans powered by AI to help you feel your best—every day, every meal.",
-    img: "/assets/nutryvo-1.webp",
+    img: "/assets/nutryvo-1.png",
   },
   {
     title: "Healthy Starts with Nutryvo",
     description:
       "No guesswork—just science-backed meal plans made for your body and your goals.",
-    img: "/assets/nutryvo-2.jpg",
+    img: "/assets/nutryvo-2.png",
   },
   {
     title: "Fuel Your Day, the Right Way",
     description:
       "Balanced, delicious, and tailored just for you. Start your health journey with Nutryvo today.",
-    img: "/assets/nutryvo-3.webp",
+    img: "/assets/nutryvo-3.png",
   },
 ];
 
@@ -40,41 +40,41 @@ const Banner = () => {
 
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
+      modules={[ Autoplay ]}
       spaceBetween={30}
       slidesPerView={1}
       pagination={{ clickable: true }}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
-      className="h-[400px] lg:h-[680px] z-10"
+      className="h-[400px] lg:h-[600px] z-10"
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
     >
       {bannerData.map((slide, index) => (
-        <SwiperSlide key={index} className="relative pt-10">
-          <div className="absolute w-full h-full bg-gradient-to-l from-transparent to-black bg-opacity-50 text-white">
+        <SwiperSlide  key={index} className="relative bg-gradient-to-r from-green-100 via-white to-green-100 pt-12">
+          <motion.div 
+           key={activeIndex}
+           initial={{ opacity: 0, x: 100 }}
+           animate={{ opacity: 1, x: 10 }}
+           exit={{ opacity: 0, x: -50 }}
+           transition={{ duration: 1, ease: "easeOut" }}
+          className="flex flex-col-reverse md:flex-row items-center justify-center h-full max-w-7xl mx-auto">
+
             <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4"
+               key={activeIndex}
+               initial={{ opacity: 0, x: 100 }}
+               animate={{ opacity: 1, x: 10 }}
+               exit={{ opacity: 0, x: -50 }}
+               transition={{ duration: 1, ease: "easeOut" }}
+              className="flex flex-col text-start text-gray-800 w-1/2"
             >
-              <h1 className="text-2xl lg:text-5xl font-semibold font-barlow leading-tight font-barlow">
-                {slide.title}
-              </h1>
-              <p className="font-barlow mt-2 text-gray-300 text-lg lg:max-w-2xl">
-                {slide.description}
-              </p>
-              <button className="mt-4 px-6 py-2 bg-[#22C55E] text-white uppercase font-medium hover:bg-green-600 duration-300 rounded cursor-pointer">
+              <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold font-barlow">{slide.title}</h1>
+              <p className="mt-1 lg:mt-4 text-gray-600 text-sm lg:text-lg lg:max-w-xl">{slide.description}</p>
+              <button className="w-32 mt-3 lg:mt-6 px-3 lg:px-6 py-1 cursor-pointer lg:py-2 bg-[#00C951] hover:bg-green-700 rounded text-white">
                 Get Started
               </button>
             </motion.div>
-          </div>
-          <img
-            className="object-cover w-full h-full"
-            src={slide.img}
-            alt={slide.title}
-          />
+            <img className="w-1/2 h-full object-cover" src={slide?.img} alt={slide?.title} />
+          </motion.div>
+          
         </SwiperSlide>
       ))}
     </Swiper>

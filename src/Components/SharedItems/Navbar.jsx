@@ -12,6 +12,7 @@ const Navbar = () => {
     const navItems = [
         { id: 1, name: "Home", route: "/" },
         { id: 3, name: "Meal Plans", route: "/meal-plans" },
+        { id: 8, name: "Shop", route: "/shop" },
         { id: 4, name: "Track Nutrition", route: "/track" },
         { id: 5, name: "Blog", route: "/blog" },
         { id: 6, name: "About", route: "/about" },
@@ -21,7 +22,7 @@ const Navbar = () => {
    if(pathname.includes('/dashboard')) 
     return 
   return (
-    <div className="p-1 w-full z-50 fixed shadow bg-white">
+    <div className="p-1 px-0 md:px-3 w-full z-50 fixed bg-gradient-to-r from-green-100 via-white to-green-100">
       <div className="max-w-7xl mx-auto navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -70,7 +71,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
+                <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
             {navItems?.map((nav) => (
               <li key={nav?.id}>
                 <Link
@@ -78,7 +79,7 @@ const Navbar = () => {
                   className={`${
                     pathname === nav.route
                       ? "text-green-600"
-                      : "text-gray-600"
+                      : "text-gray-700"
                   } hover:text-green-600 transition`}
                 >
                   {nav?.name}
@@ -89,6 +90,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
+          
           {
             status === "loading" ?
             <><span className="loading loading-dots loading-md text-success"></span></> 
