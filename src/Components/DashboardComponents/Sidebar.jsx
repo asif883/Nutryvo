@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import { CiLogout } from "react-icons/ci";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaHome, FaUserCircle } from "react-icons/fa";
-import { MdRestaurantMenu, MdOutlineManageAccounts } from "react-icons/md";
+import { MdRestaurantMenu } from "react-icons/md";
 import { IoFastFoodOutline } from "react-icons/io5";
-import { TbTruckDelivery, TbActivityHeartbeat } from "react-icons/tb";
-import { PiNotePencilDuotone } from "react-icons/pi";
+import { TbTruckDelivery } from "react-icons/tb";
+import { TiShoppingCart } from "react-icons/ti";
 import { useAuth } from "@/app/hooks/useAuth";
+import useUserData from "@/app/hooks/useUserData";
 
 const Routes = [
   {
@@ -24,6 +25,20 @@ const Routes = [
     icon: <FaUserCircle />,
     link: "/dashboard/profile",
   },
+  
+];
+
+const adminRoutes = [
+  {
+    id: 3,
+    label: "All User",
+    icon: <FaUserCircle/>,
+    link: "/dashboard/users",
+  },
+]
+
+const userRoutes = [
+
   {
     id: 3,
     label: "Meal Planner",
@@ -32,9 +47,9 @@ const Routes = [
   },
   {
     id: 4,
-    label: "My Nutrition",
-    icon: <TbActivityHeartbeat />,
-    link: "/dashboard/nutrition",
+    label: "My Cart",
+    icon: <TiShoppingCart/>,
+    link: "/dashboard/cart",
   },
   {
     id: 5,
@@ -48,18 +63,15 @@ const Routes = [
     icon: <TbTruckDelivery />,
     link: "/dashboard/delivery-tracker",
   },
-  {
-    id: 7,
-    label: "Home",
-    icon: <FaHome/>,
-    link: "/",
-  }
-];
+]
 
 const Sidebar = () => {
   const pathname = usePathname();
   const { signOut } = useAuth()
-
+  
+  const { singleUser } = useUserData()
+ 
+  
   return (
     <div className="p-4 bg-[#f7faf7] min-h-screen shadow-md">
       {/* Logo */}
@@ -88,8 +100,60 @@ const Sidebar = () => {
             <span>{route.label}</span>
           </Link>
         ))}
+         {
+           singleUser?.role === "member" 
+           ?
+           <>
+            {userRoutes.map((route) => (
+            <Link
+              key={route.id}
+              href={route.link}
+              className={`flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition duration-200 border border-green-200 ${
+                pathname === route.link
+                  ? "bg-green-100 text-green-600 shadow-md border-0"
+                  : "text-gray-700 hover:bg-green-100 hover:border-0"
+              }`}
+            >
+              <span className="text-xl">{route.icon}</span>
+              <span>{route.label}</span>
+            </Link>
+          ))}
+           </>
+           :
+           <></>
+         }
 
-        {/* Logout Button */}
+         {
+           singleUser?.role === "admin" 
+           ?
+           <>
+           {adminRoutes.map((route) => (
+            <Link
+              key={route.id}
+              href={route.link}
+              className={`flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition duration-200 border border-green-200 ${
+                pathname === route.link
+                  ? "bg-green-100 text-green-600 shadow-md border-0"
+                  : "text-gray-700 hover:bg-green-100 hover:border-0"
+              }`}
+            >
+              <span className="text-xl">{route.icon}</span>
+              <span>{route.label}</span>
+            </Link>
+          ))}
+           </>
+           :
+           <></>
+         }
+
+        <Link
+              
+              href={'/'}
+              className={`flex items-center gap-3 px-5 py-3 rounded-xl font-medium transition duration-200 border border-green-200 text-gray-700 hover:bg-green-100 hover:border-0`}
+            >
+              <span className="text-xl"><FaHome/></span>
+              <span>Home</span>
+          </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/" })}
           className="border border-green-200 flex items-center gap-3 px-5 py-3 rounded-xl text-gray-700 font-medium w-full hover:bg-red-100 hover:text-red-600 hover:border-0 transition duration-200 cursor-pointer"
