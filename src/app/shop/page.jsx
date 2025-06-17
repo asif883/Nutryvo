@@ -14,7 +14,7 @@ const page = () => {
             const data = await res.json()
             setProducts(data)
             setLoading(false)
-            console.log(data);
+            // console.log(data);
         }
        fetchData() 
     }, [])
