@@ -24,8 +24,43 @@ export default function Cart() {
     }
   }, [email]);
 
-  const handleOrder = async () => {
-    
+
+const handleDelete = async (id) => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
+  const result = await swalWithBootstrapButtons.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "No, cancel!",
+    reverseButtons: true,
+  });
+
+  if (result.isConfirmed) {
+    const res = await fetch(`/api/cart-delete/${id}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      swalWithBootstrapButtons.fire("Deleted!", "Your item has been deleted.", "success");
+      setItems((prev) => prev.filter((item) => item._id !== id));
+    } else {
+      swalWithBootstrapButtons.fire("Failed!", "Item could not be deleted.", "error");
+    }
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    swalWithBootstrapButtons.fire("Cancelled", "Your item is safe :)", "error");
+  }
+};
+
+  const handleOrder = async () => { 
     Swal.fire({
       icon: "success",
       title: "Order Placed!",
@@ -59,7 +94,9 @@ export default function Cart() {
                     <h2 className="card-title">{item.name}</h2>
                     <p>Price: {item?.price}/kg</p>
                     <div className="card-actions justify-end">
-                      <button className="ml-2 border border-green-300 px-2 py-1 rounded-md text-green-600 hover:text-white hover:bg-green-600 font-semibold cursor-pointer">
+                      <button
+                       onClick={()=> handleDelete(item?._id)}
+                       className="ml-2 border border-green-300 px-2 py-1 rounded-md text-green-600 hover:text-white hover:bg-green-600 font-semibold cursor-pointer">
                         Remove
                       </button>
                     </div>
