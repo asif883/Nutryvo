@@ -10,6 +10,9 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
 import { TiShoppingCart } from "react-icons/ti";
 import { useAuth } from "@/app/hooks/useAuth";
+import { FaUsers } from "react-icons/fa";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { MdOutlinePendingActions } from "react-icons/md";
 import useUserData from "@/app/hooks/useUserData";
 
 const Routes = [
@@ -30,10 +33,22 @@ const Routes = [
 
 const adminRoutes = [
   {
-    id: 3,
+    id: 1,
     label: "All User",
-    icon: <FaUserCircle/>,
+    icon: <FaUsers/>,
     link: "/dashboard/users",
+  },
+  {
+    id: 2,
+    label: "Add Product",
+    icon: <MdOutlineAddCircleOutline/>,
+    link: "/dashboard/add-product",
+  },
+  {
+    id: 3,
+    label: "Pending Orders",
+    icon: <MdOutlinePendingActions/>,
+    link: "/dashboard/pending-orders",
   },
 ]
 

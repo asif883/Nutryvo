@@ -4,13 +4,16 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { FaCamera } from "react-icons/fa";
 import Loading from "@/Components/SharedItems/Loading";
+import useUserData from "@/app/hooks/useUserData";
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
 
   const user = session?.user || {};
 
-  // Placeholder health metrics
+  const {singleUser} = useUserData()
+  
+
   const healthData = {
     bmi: "22.5",
     calories: "2100 kcal/day",
@@ -42,7 +45,7 @@ const ProfilePage = () => {
         </div>
         <div>
           <h2 className="text-xl font-bold text-gray-800">{user.name || "No Name Provided"}</h2>
-          <p className="text-gray-500">Member</p>
+          <p className="text-gray-500 capitalize">{singleUser?.role}</p>
           <p className="text-gray-400">Dhaka, Bangladesh</p>
         </div>
       </div>
@@ -75,7 +78,7 @@ const ProfilePage = () => {
           </div>
           <div>
             <p className="text-gray-500">User Role</p>
-            <p className="font-medium">User</p>
+            <p className="font-medium capitalize">{singleUser?.role}</p>
           </div>
         </div>
       </div>

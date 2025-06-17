@@ -3,7 +3,7 @@ import useUserData from '@/app/hooks/useUserData';
 import React, { useEffect, useState } from 'react';
 import { RiAdminLine } from 'react-icons/ri';
 import { TiUserDeleteOutline } from 'react-icons/ti';
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import Loading from '@/Components/SharedItems/Loading';
 
 const page = () => {
     const {singleUser} = useUserData()
@@ -23,7 +23,7 @@ const page = () => {
     return (
         <div className='w-full'>
          {
-            loading ? <>loading.....</>
+            loading ? <><Loading/></>
             :
             <>
              {
