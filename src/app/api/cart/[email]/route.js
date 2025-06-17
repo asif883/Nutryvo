@@ -6,7 +6,7 @@ export const GET = async (req , {params}) => {
 
     try {
         const db = await mongoDB()
-        const cartItem = await db.collection("cartItems").findOne({ buyerEmail: email})
+        const cartItem = await db.collection("cartItems").find({ buyerEmail: email}).toArray()
         
         return NextResponse.json(cartItem)
     } catch (error) {
