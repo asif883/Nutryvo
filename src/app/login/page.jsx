@@ -42,12 +42,12 @@ const Login = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    await signIn("google");
+  const handleGoogleLogin = (provider) => {
+    signIn(provider ,{ callbackUrl: "/" })
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50 pb-8">
+    <div className="min-h-screen flex items-center justify-center bg-green-50 px-4 py-4">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl overflow-hidden max-w-6xl w-full">
         {/* Left Side: Form */}
         <div className="w-full md:w-1/2 p-10">
@@ -56,7 +56,7 @@ const Login = () => {
           <p className="text-gray-600 mb-6">Please enter your details to continue.</p>
 
           <button
-            onClick={handleGoogleLogin}
+            onClick={()=> handleGoogleLogin('google')}
             className="flex items-center justify-center gap-2 w-full border border-gray-300 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 mb-6 cursor-pointer"
           >
             <FcGoogle className="text-xl" />
@@ -115,7 +115,7 @@ const Login = () => {
           {/* Signup */}
           <p className="text-sm text-center mt-6 text-gray-600">
             Don’t have an account?{" "}
-            <Link href="/signup" className="text-green-600 underline">
+            <Link href="/signup" className="text-green-600 underline font-medium">
               Sign up for free
             </Link>
           </p>

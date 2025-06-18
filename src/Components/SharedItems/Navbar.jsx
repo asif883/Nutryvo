@@ -65,16 +65,19 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
+          <div className="flex items-center gap-1.5">
+            <img className="w-12 h-12 rounded-full" src="/assets/bg-remove-logo.png" alt="logo" />
           <Link
             href="/"
             className="font-palyFair text-4xl font-bold text-green-600 tracking-wide"
-          >
+          > 
             Nutryvo
           </Link>
+          </div>
         </div>
 
         <div className="navbar-center hidden lg:flex">
-                <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
+            <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
             {navItems?.map((nav) => (
               <li key={nav?.id}>
                 <Link
@@ -94,10 +97,10 @@ const Navbar = () => {
 
         <div className="navbar-end">
            <Link href={'/dashboard/profile'} className="mr-4 text-green-600">
-                <FaRegUserCircle size={22}/>
+                <FaRegUserCircle size={24}/>
             </Link>
             <Link href={'/dashboard/cart'} className="text-green-600">
-                <TiShoppingCart size={24}/>
+                <TiShoppingCart size={28}/>
             </Link>
 
         </div>

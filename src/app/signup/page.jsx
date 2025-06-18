@@ -56,20 +56,20 @@ const Signup = () => {
   };
 
   return (
-   <div className="min-h-screen w-full bg-green-50 flex items-center justify-center px-4 py-8">
+   <div className="min-h-screen w-full bg-green-50 flex items-center justify-center px-4 py-4">
       <div className="flex flex-col md:flex-row items-center bg-white shadow-2xl rounded-2xl overflow-hidden w-full max-w-6xl h-[90vh]">
         
         {/* Left Side - Form */}
         <div className="w-full md:w-1/2 h-full p-10 flex flex-col justify-center">
           <Link
             href="/"
-            className="text-base font-semibold text-gray-800 hover:text-gray-600 mb-2 flex items-center gap-2"
+            className="text-base font-semibold text-gray-800 hover:text-gray-600 mb-1 flex items-center gap-2"
           >
             <FaArrowLeft /> Back Home
           </Link>
 
-          <h2 className="text-3xl font-bold text-green-700 mb-6">Create an account</h2>
-
+          <h2 className="text-3xl font-bold text-green-700 mb-1">Create an account</h2>
+          <p className="text-gray-600 mb-6">Please enter your details to continue.</p>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Name */}
             <div>
@@ -121,7 +121,7 @@ const Signup = () => {
 
           <p className="mt-6 text-lg text-gray-600">
             Already have an account?{" "}Please{" "}
-            <Link href="/login" className="font-medium underline text-green-700">
+            <Link href="/login" className="font-medium underline text-green-500">
               Login
             </Link>
           </p>

@@ -15,8 +15,9 @@ import {
 const Footer = () => {
   const pathname = usePathname()
 
-  if(pathname.includes('/dashboard')) 
-  return 
+  if (pathname.includes('/dashboard') || pathname.includes('/login') || pathname.includes('/signup')) {
+  return;
+  } 
 
   return (
     <footer className="bg-gray-900 text-gray-200 px-6 py-10">

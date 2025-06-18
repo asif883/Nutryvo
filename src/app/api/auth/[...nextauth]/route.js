@@ -62,7 +62,7 @@ const handler = NextAuth({
     },
     async signIn({user , account}) {
       if(account.provider === 'google'){
-        const {name , email, image , role = "member"} = user
+        const {name , email, image } = user
         try {
           const db = await mongoDB()
           const userCollection = db.collection("users")
@@ -75,13 +75,13 @@ const handler = NextAuth({
               role : "member"
               };
             const res = await userCollection.insertOne(newUser)
-            return NextResponse.json(res)
           }
+          return true
         } catch (error) {
           console.log(error);
         }
       }else{
-        return user;
+        return true;
       }
     }
   },
