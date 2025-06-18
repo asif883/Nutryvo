@@ -2,6 +2,7 @@
 import { useAuth } from "@/app/hooks/useAuth";
 import Loading from "@/Components/SharedItems/Loading";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 export default function Cart() {
@@ -9,6 +10,12 @@ export default function Cart() {
   const [loading , setLoading] = useState(true)
   const { session } = useAuth();
   const email = session?.user?.email;
+
+    const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const totalPrice = items.reduce((acc, item) => acc + parseFloat(item.price), 0);
 
@@ -60,26 +67,57 @@ const handleDelete = async (id) => {
   }
 };
 
-  const handleOrder = async () => { 
-    Swal.fire({
-      icon: "success",
-      title: "Order Placed!",
-      text: "Your order has been submitted successfully.",
-      confirmButtonColor: "#10b981",
-    });
-    setItems([])
+  const handleOrder = async (data) => { 
+     if (!email) return;
+
+    try {
+      const res = await fetch("/api/place-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userEmail: email,
+          address: data.address,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Order Placed!",
+          text: result.message || "Your order has been submitted successfully.",
+          confirmButtonColor: "#10b981",
+        });
+        setItems([]);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Failed!",
+          text: result.message || "Failed to place order.",
+          confirmButtonColor: "#dc2626",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Something went wrong.",
+      });
+    }
   };
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-8 text-center text-green-700">My Cart</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-green-700">Check out your cart</h1>
 
       {
         loading ? <Loading/>
         :
         <>
         {items?.length === 0 ? (
-        <p className="text-center text-gray-500">Your cart is empty.</p>
+        <p className="text-2xl font-semibold text-gray-500 text-center">Your cart is empty.</p>
       ) : (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
           {/*  Cart Items */}
@@ -107,21 +145,34 @@ const handleDelete = async (id) => {
           </div>
 
           {/*  Order Summary */}
-          <div className="border border-green-200 rounded-md p-5 h-fit shadow-md">
-            <h2 className="text-xl font-semibold mb-4 text-green-800">Order Summary</h2>
-            <p className="text-gray-700 mb-2">
-              Total Items: <span className="font-bold">{items.length}</span>
-            </p>
-            <p className="text-gray-700 mb-4">
-              Total Price: <span className="font-bold text-green-600">{totalPrice}</span>
-            </p>
-            <button
-              onClick={handleOrder}
-              className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200 cursor-pointer"
-            >
-              Place Order
-            </button>
-          </div>
+            <div className="border border-green-200 rounded-md p-5 h-fit shadow-md">
+                <h2 className="text-xl font-semibold mb-4 text-green-800">Order Summary</h2>
+                <p className="text-gray-700 mb-2">
+                  Total Items: <span className="font-bold">{items.length}</span>
+                </p>
+                <p className="text-gray-700 mb-4">
+                  Total Price: <span className="font-bold text-green-600">{totalPrice}</span>
+                </p>
+
+                <form onSubmit={handleSubmit(handleOrder)} className="space-y-4">
+                  <textarea
+                    {...register("address", { required: "Address is required" })}
+                    className="w-full p-2 border border-gray-300 rounded-md"
+                    placeholder="Enter your address"
+                    rows="3"
+                  ></textarea>
+                  {errors.address && (
+                    <p className="text-red-500 text-sm">{errors.address.message}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200 cursor-pointer"
+                  >
+                    Place Order
+                  </button>
+                </form>
+            </div>
         </div>
       )}
         </>
