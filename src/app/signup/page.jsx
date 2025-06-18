@@ -1,113 +1,145 @@
-"use client"
+"use client";
 
-import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
-import Link from 'next/link';
+import Swal from "sweetalert2";
+import Link from "next/link";
+import Image from "next/image";
+import { FaArrowLeft } from "react-icons/fa";
 
-
-const Login = () => {
-
+const Signup = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const onSubmit = async (data) => {
+    const { name, email, password, role = "member" } = data;
+    const userInfo = { name, email, password, role };
 
-
-const onSubmit = async (data) => {
-  const { name, email, password , role = "member" } = data;
-  const userInfo = { name, email, password, role };
-
-  try {
-    const res = await fetch('http://localhost:3000/api/signup', {
-      method: "POST",
-      body: JSON.stringify(userInfo),
-      headers: {
-        "content-type": "application/json"
-      }
-    });
-
-    const result = await res.json();
-    if (res.ok) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Account Created!',
-        text: 'You have successfully signed up!',
-        confirmButtonColor: '#00A63E'
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        body: JSON.stringify(userInfo),
+        headers: {
+          "content-type": "application/json",
+        },
       });
-    } else {
+
+      const result = await res.json();
+
+      if (res.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Account Created!",
+          text: "You have successfully signed up!",
+          confirmButtonColor: "#00A63E",
+        }).then(()=> {
+          window.location.href = "/";
+        })
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: result.message || "Something went wrong!",
+          confirmButtonColor: "#d33",
+        });
+      }
+    } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: result.message || 'Something went wrong!',
-        confirmButtonColor: '#d33'
+        icon: "error",
+        title: "Network Error",
+        text: error.message || "Please try again later.",
+        confirmButtonColor: "#d33",
       });
     }
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Network Error',
-      text: error.message || 'Please try again later.',
-      confirmButtonColor: '#d33'
-    });
-  }
-};
-
-
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
-      <div className="bg-white mt-16 p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Create an account</h2>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div>
-            <label className="block font-medium mb-1">Name</label>
-            <input
-              {...register("name", { required: "Name is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
-              type="text"
-              placeholder="Enter Your Name"
-            />
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
-          </div>
-          <div>
-            <label className="block font-medium mb-1">Email</label>
-            <input
-              {...register("email", { required: "Email is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
-              type="email"
-              placeholder="example@email.com"
-            />
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-          </div>
-
-          <div>
-            <label className="block font-medium mb-1">Password</label>
-            <input
-              {...register("password", { required: "Password is required" })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
-              type="password"
-              placeholder="Enter your password"
-            />
-            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300 cursor-pointer"
-          >
-            Sign Up
-          </button>
-        </form>
-
-       <p className='mt-5 font-medium text-gray-700'>Already have an account? Please <Link className='font-bold underline' href={'/login'}>Login</Link></p>
-
+   <div className="min-h-screen w-full bg-green-50 flex items-center justify-center px-4 py-8">
+      <div className="flex flex-col md:flex-row items-center bg-white shadow-2xl rounded-2xl overflow-hidden w-full max-w-6xl h-[90vh]">
         
+        {/* Left Side - Form */}
+        <div className="w-full md:w-1/2 h-full p-10 flex flex-col justify-center">
+          <Link
+            href="/"
+            className="text-base font-semibold text-gray-800 hover:text-gray-600 mb-2 flex items-center gap-2"
+          >
+            <FaArrowLeft /> Back Home
+          </Link>
+
+          <h2 className="text-3xl font-bold text-green-700 mb-6">Create an account</h2>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            {/* Name */}
+            <div>
+              <p className="text-lg font-medium mb-1">Name</p>
+              <input
+                {...register("name", { required: "Name is required" })}
+                type="text"
+                placeholder="Enter your name"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-200"
+              />
+              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+            </div>
+
+            {/* Email */}
+            <div>
+              <p className="text-lg font-medium mb-1">Email</p>
+              <input
+                {...register("email", { required: "Email is required" })}
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-200"
+              />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            </div>
+
+            {/* Password */}
+            <div>
+              <p className="text-lg font-medium mb-1">Password</p>
+              <input
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: { value: 6, message: "Minimum 6 characters" },
+                })}
+                type="password"
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-green-200"
+              />
+              {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition duration-300 cursor-pointer"
+            >
+              Sign Up
+            </button>
+          </form>
+
+          <p className="mt-6 text-lg text-gray-600">
+            Already have an account?{" "}Please{" "}
+            <Link href="/login" className="font-medium underline text-green-700">
+              Login
+            </Link>
+          </p>
+        </div>
+
+        {/* Right Side - Image */}
+        <div className="w-full md:w-1/2 h-full relative">
+          <Image
+            src="/assets/signup-img.avif"
+            alt="signup Visual"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

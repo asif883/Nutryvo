@@ -21,8 +21,9 @@ const Navbar = () => {
         { id: 7, name: "Contact", route: "/contact" }
     ];
 
-   if(pathname.includes('/dashboard')) 
-    return 
+  if (pathname.includes('/dashboard') || pathname.includes('/login') || pathname.includes('/signup')) {
+  return;
+  }
   return (
     <div className="p-1 px-0 md:px-3 w-full z-50 fixed bg-gradient-to-r from-green-100 via-white to-green-100">
       <div className="max-w-7xl mx-auto navbar ">
