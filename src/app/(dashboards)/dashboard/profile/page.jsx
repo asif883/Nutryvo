@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { FaCamera } from "react-icons/fa";
 import Loading from "@/Components/SharedItems/Loading";
@@ -33,11 +32,10 @@ const ProfilePage = () => {
       {/* User Card */}
       <div className="bg-white rounded-xl shadow p-6 flex items-center gap-6">
         <div className="relative w-24 h-24">
-          <Image
-            src={user.image || "/assets/default-avatar.jpg"}
-            alt="User Avatar"
-            fill
-            className="rounded-full object-cover border-4 border-green-200"
+          <img
+            src={singleUser?.image || "/assets/default-avatar.jpg"}
+            alt={singleUser?.name}
+            className="rounded-full object-cover border-4 border-green-200 w-24 h-24"
           />
           <span className="absolute bottom-1 right-1 bg-green-600 p-1 rounded-full text-white text-xs">
             <FaCamera />

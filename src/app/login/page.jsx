@@ -45,6 +45,10 @@ const onSubmit = async (data) => {
   }
 };
 
+const handleGoogleLogin = async (provider) =>{
+    const res = await signIn(provider)
+}
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-lime-200 px-4">
@@ -87,8 +91,8 @@ const onSubmit = async (data) => {
         </div>
 
         <button
-          
-          className="mt-4 w-full flex items-center justify-center gap-3 border py-2 rounded-lg hover:bg-gray-100 transition"
+          onClick={()=> handleGoogleLogin('google')}
+          className="cursor-pointer mt-4 w-full flex items-center justify-center gap-3 border py-2 rounded-lg hover:bg-gray-100 transition"
         >
           <FcGoogle className="text-xl" />
           <span>Continue with Google</span>

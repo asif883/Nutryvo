@@ -2,6 +2,9 @@ import { mongoDB } from "@/lib/mongoDB";
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import { NextResponse } from "next/server";
 
 const handler = NextAuth({
   session: {
@@ -9,6 +12,14 @@ const handler = NextAuth({
     maxAge: 30 * 24 * 60 * 60,
   },
   providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET
+    }),
+    GoogleProvider({
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET
+    }),
     CredentialsProvider({
       credentials: {
         email: {},
@@ -49,10 +60,35 @@ const handler = NextAuth({
       }
       return session;
     },
+    async signIn({user , account}) {
+      if(account.provider === 'google'){
+        const {name , email, image , role = "member"} = user
+        try {
+          const db = await mongoDB()
+          const userCollection = db.collection("users")
+          const userExits = await userCollection.findOne({email})
+            if(!userExits){
+              const newUser = {
+              name,
+              email,
+              image,
+              role : "member"
+              };
+            const res = await userCollection.insertOne(newUser)
+            return NextResponse.json(res)
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }else{
+        return user;
+      }
+    }
   },
   pages: {
     signIn: "/login",
   },
+  
   secret: process.env.NEXTAUTH_SECRET,
 });
 
