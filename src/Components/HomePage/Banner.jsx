@@ -45,7 +45,7 @@ const Banner = () => {
       slidesPerView={1}
       pagination={{ clickable: true }}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
-      className="h-[500px] sm:h-[500px] md:h-[580px] lg:h-[600px] z-10"
+      className="h-[500px] sm:h-[500px] md:h-[400px] lg:h-[600px] z-10"
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
     >
       {bannerData.map((slide, index) => (
@@ -83,7 +83,7 @@ const Banner = () => {
 
             {/* Image */}
             <img
-              className="w-full sm:w-[90%] md:w-1/2 h-64 sm:h-64 md:h-full object-contain" // ✅ object-contain for better control
+              className="w-full md:w-1/2 h-64 md:h-full object-contain md:object-cover"
               src={slide?.img}
               alt={slide?.title}
             />
