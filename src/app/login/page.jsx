@@ -43,7 +43,10 @@ const Login = () => {
   };
 
   const handleGoogleLogin = (provider) => {
-    signIn(provider ,{ callbackUrl: "/" })
+    signIn(provider ,{
+      redirect : false,
+      callbackUrl: "/"
+    })
   };
 
   return (
