@@ -19,9 +19,9 @@ const ContactPage = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-100 to-green-50 py-20 text-center">
+      <section className="bg-gradient-to-r from-green-100 via-white to-green-100 py-20 text-center">
         <div className="pt-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-green-700">Get in Touch</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-green-700">Get in Touch</h1>
             <p className="mt-4 text-gray-600">We’d love to hear from you. Reach out with your questions or feedback!</p>
         </div>
       </section>

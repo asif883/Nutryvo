@@ -1,6 +1,6 @@
 "use client";
 
-
+import Link from "next/link";
 
 // Meal Plans Data
 const mealPlans = [
@@ -30,12 +30,13 @@ const mealPlans = [
   },
 ];
 
+
 const MealPlansPage = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-100 to-green-50 py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-green-700 pt-8">Meal Plans</h1>
+      <section className="bg-gradient-to-r from-green-100 via-white to-green-100 py-16 text-center">
+        <h1 className="text-3xl md:text-4xl font-bold text-green-700 pt-8">Personalized Meal Planner</h1>
         <p className="mt-4 text-gray-600 max-w-xl mx-auto">
           Choose a meal plan that fits your goal—whether it's weight loss, muscle gain, or mindful eating.
         </p>
@@ -58,9 +59,9 @@ const MealPlansPage = () => {
               <h2 className="text-xl font-semibold text-green-700">{plan.title}</h2>
               <p className="text-gray-600 text-sm">{plan.description}</p>
               <div className="text-sm text-gray-500">Calories: {plan.calories}</div>
-              <button className="mt-2 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+              <Link href={'/dashboard/meal-planner'} className="mt-2 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
                 View Plan
-              </button>
+              </Link>
             </div>
           </div>
         ))}

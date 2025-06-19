@@ -42,10 +42,10 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-100 via-white to-green-100 py-20">
         <div className="max-w-6xl mx-auto text-center px-6 pt-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-green-700 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">
             Empower Your Wellness Journey
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
             At Nutryvo, we blend nutrition, fitness, and mindfulness to help you achieve a balanced life.
           </p>
         </div>
@@ -54,14 +54,14 @@ const AboutPage = () => {
       {/* Mission & Vision */}
       <section className="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
         <div>
-          <h2 className="text-3xl font-semibold text-green-700 mb-4">Our Mission</h2>
+          <h2 className="text-2xl font-bold text-green-700 mb-4">Our Mission</h2>
           <p className="text-gray-600">
             Nutryvo’s mission is to inspire healthier lifestyles by providing personalized and actionable wellness solutions. 
             Whether it's through clean eating, effective workouts, or mindfulness—our goal is to empower every individual.
           </p>
         </div>
         <div>
-          <h2 className="text-3xl font-semibold text-green-700 mb-4">Our Vision</h2>
+          <h2 className="text-2xl font-bold text-green-700 mb-4">Our Vision</h2>
           <p className="text-gray-600">
             We envision a world where wellness is accessible, sustainable, and enjoyable. Nutryvo is more than just a platform—it’s a lifestyle guide for a better you.
           </p>
