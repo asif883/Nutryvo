@@ -40,41 +40,54 @@ const Banner = () => {
 
   return (
     <Swiper
-      modules={[ Autoplay ]}
+      modules={[Autoplay]}
       spaceBetween={30}
       slidesPerView={1}
       pagination={{ clickable: true }}
       autoplay={{ delay: 4000, disableOnInteraction: false }}
-      className="h-[400px] lg:h-[600px] z-10"
+      className="h-[500px] sm:h-[500px] md:h-[580px] lg:h-[600px] z-10"
       onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
     >
       {bannerData.map((slide, index) => (
-        <SwiperSlide  key={index} className="relative bg-gradient-to-r from-green-100 via-white to-green-100 pt-12">
-          <motion.div 
-           key={activeIndex}
-           initial={{ opacity: 0, x: 100 }}
-           animate={{ opacity: 1, x: 10 }}
-           exit={{ opacity: 0, x: -50 }}
-           transition={{ duration: 1, ease: "easeOut" }}
-          className="flex flex-col-reverse md:flex-row items-center justify-center h-full max-w-7xl mx-auto">
-
+        <SwiperSlide
+          key={index}
+          className="relative bg-gradient-to-r from-green-100 via-white to-green-100 pt-12"
+        >
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 10 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex flex-col-reverse md:flex-row items-center justify-center h-full max-w-7xl mx-auto" 
+          >
+            {/* Text Content */}
             <motion.div
-               key={activeIndex}
-               initial={{ opacity: 0, x: 100 }}
-               animate={{ opacity: 1, x: 10 }}
-               exit={{ opacity: 0, x: -50 }}
-               transition={{ duration: 1, ease: "easeOut" }}
-              className="flex flex-col text-start text-gray-800 w-1/2"
+              key={activeIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 10 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="flex flex-col justify-center items-center md:items-start text-center md:text-left text-gray-800 w-full md:w-1/2 px-2 sm:px-4"
             >
-              <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold font-barlow">{slide.title}</h1>
-              <p className="mt-1 lg:mt-4 text-gray-600 text-sm lg:text-lg lg:max-w-xl">{slide.description}</p>
-              <button className="w-32 mt-3 lg:mt-6 px-3 lg:px-6 py-1 cursor-pointer lg:py-2 bg-[#00C951] hover:bg-green-700 rounded text-white">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold font-barlow leading-snug"> 
+                {slide.title}
+              </h1>
+              <p className="mt-1 text-gray-600 text-sm sm:text-base lg:text-lg max-w-md lg:max-w-xl">
+                {slide.description}
+              </p>
+              <button className="w-32 sm:w-36 mt-4 sm:mt-4 px-4 py-2 text-sm sm:text-base bg-[#00C951] hover:bg-green-700 rounded text-white transition duration-300">
                 Get Started
               </button>
             </motion.div>
-            <img className="w-1/2 h-full object-cover" src={slide?.img} alt={slide?.title} />
+
+            {/* Image */}
+            <img
+              className="w-full sm:w-[90%] md:w-1/2 h-64 sm:h-64 md:h-full object-contain" // ✅ object-contain for better control
+              src={slide?.img}
+              alt={slide?.title}
+            />
           </motion.div>
-          
         </SwiperSlide>
       ))}
     </Swiper>

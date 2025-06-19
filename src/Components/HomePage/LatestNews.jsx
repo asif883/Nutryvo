@@ -45,9 +45,9 @@ const LatestNews = () => {
   return (
     <section className="py-14 px-4 sm:px-6 lg:px-16 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div>
-            <h2 className="text-4xl font-semibold mb-2">Latest News</h2>
+            <h2 className="text-2xl md:text-4xl font-semibold mb-2">Latest News</h2>
             <p className="text-gray-500 max-w-xl">
               Stay informed with expert insights, practical health tips, and the
               latest updates to support your wellness journey.

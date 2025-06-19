@@ -48,7 +48,7 @@ const myStyles = {
 const Review = () => {
   return (
     <div
-      className="relative mt-16 md:mt-20 lg:mt-32 h-[600px] bg-fixed"
+      className="relative mt-16 md:mt-20 lg:mt-32 min-h-[600px] bg-fixed"
       style={{
         backgroundImage: `url(/assets/review-bg.jpg)`,
         backgroundSize: "cover",
@@ -57,7 +57,7 @@ const Review = () => {
     >
       <div className="absolute inset-0 bg-black/80"></div>
       {/* Content */}
-      <div className="relative text-center py-16 px-6">
+      <div className="relative text-center py-16 px-4">
         <div className="text-center ">
           <h1 className="text-3xl font-bold font-barlow text-white mb-2 uppercase">
             What Our Customers Say
@@ -71,7 +71,7 @@ const Review = () => {
           <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
             {reviews.map((review) => (
               <SwiperSlide key={review.id}>
-                <div className="my-8 lg:my-10 mx-12 lg:mx-24 flex flex-col items-center text-center">
+                <div className="my-8 lg:my-10 mx-2 lg:mx-24 flex flex-col items-center text-center">
                 <img className='w-28 h-28 object-cover rounded-full mb-4' src={review?.image} alt="" />
                   
                   <p className="text-3xl font-semibold text-orange-400">

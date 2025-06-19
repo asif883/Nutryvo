@@ -75,12 +75,12 @@ const productCard = ({product}) => {
   return (
     <div className='border border-green-200 p-3'>
        <div className='flex items-center gap-3 relative'>
-           <img className='w-40 h-32 object-cover' src={image} alt={name} />
+           <img className='w-32 md:w-40 h-24 md:h-32 object-cover' src={image} alt={name} />
            <div>
-              <h3 className='text-xl font-semibold font-barlow'>{name}</h3>
+              <h3 className='text-lg md:text-xl font-semibold font-barlow'>{name}</h3>
               <p className='text-gray-700 font-barlow'>Price: {price}/kg</p>
            </div>
-           <div className='absolute top-1.5 right-5'>
+           <div className='absolute top-1.5 -right-2 md:-right-5'>
             <button onClick={() => handleCartData(singleUser?.email)} className='cursor-pointer hover:text-green-600'><MdOutlineShoppingCart size={24}/></button>
            </div>
        </div>

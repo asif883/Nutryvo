@@ -66,10 +66,10 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center gap-1.5">
-            <img className="w-12 h-12 rounded-full" src="/assets/bg-remove-logo.png" alt="logo" />
+            <img className="w-8 md:w-12 h-8 md:h-12 rounded-full" src="/assets/bg-remove-logo.png" alt="logo" />
           <Link
             href="/"
-            className="font-palyFair text-4xl font-bold text-green-600 tracking-wide"
+            className="font-palyFair text-3xl md:text-4xl font-bold text-green-600 tracking-wide"
           > 
             Nutryvo
           </Link>

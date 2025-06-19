@@ -39,7 +39,7 @@ const page = () => {
                  {
                     products?.length !== 0 ?
                     <div className='my-12'>
-                        <div className='flex items-center gap-5'>
+                        <div className='flex flex-wrap gap-3 justify-center md:justify-start'>
                             <button 
                              onClick={()=> setSelected("All")}
                              className={`border border-green-300 px-5 py-1.5 rounded-3xl capitalize cursor-pointer text-green-600 ${selected === 'All'
