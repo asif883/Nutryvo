@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Nutryvo - Nutrition & Wellness Platform
 
-## Getting Started
+Nutryvo is a modern, user-focused nutrition and wellness platform designed to promote healthy living through personalized meal plans, sustainable food choices.
 
-First, run the development server:
+## 🚀 Live Preview
 
+[Visit Nutryvo Website](https://nutryvo.vercel.app)
+
+---
+
+## 🧩 Features
+
+- 🌱 Personalized Meal Plans (Basic & Professional)
+- 🛒 Dry Food Product Marketplace
+- 💬 Real-time AI Chatbot (Coming Soon)
+- 🔐 Secure Authentication (NextAuth)
+- ⚡ Fast, responsive UI with Next.js & Tailwind CSS
+- 📦 Category-based filtering & product search
+- 📱 Mobile-friendly and accessible design
+
+---
+
+## 🛠️ Tech Stack
+
+| Category        | Tech Used                      |
+|----------------|---------------------------------|
+| Frontend       | Next.js, Tailwind CSS           |
+| Backend        | Node.js, API Routes (Next.js)   |
+| Authentication | Next Auth                   |
+| AI Chatbot     | (planing)           |
+| Database       | MongoDB       |
+| Deployment     | Vercel                          |
+
+---
+
+## 📁 Folder Structure (Simplified)
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/app
+/components
+/hooks
+/CSS
+/lib
+/api
+...
+/public
+/styles
+.env.local
+next.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Installation & Setup
 
-## Learn More
+1. **Clone the repository**
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git clone https://github.com/asif883/Nutryvo.git
+cd nutryvo
+```
+2. **Install dependencies**
+  ```bash
+  npm install
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Configure environment variables**
+   
+    Create a .env.local file and add your secret keys.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Run Locally**
+  ```bash
+  npm run dev
+  ```
 
-## Deploy on Vercel
+ ---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### ✅ Roadmap:
+- [x] Basic & Professional meal plans
+- [x] Product filtering and category UI
+- [ ] AI Chatbot Integration (Coming Soon)
+- [x] Admin Panel 
+- [ ] Advanced analytics for user habits (Coming Soon)
+- [x] Community and blog features
+  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🤝 Contributing
+Contributions are welcome! Please open an issue or submit a pull request.
+
+### 🙋‍♂️ Author
+Developed by [Asif Iqbal](https://www.linkedin.com/in/asif-iqbal0)
+
+---
+
+Would you like me to tailor this more to include current API endpoints, components, or a custom logo?
