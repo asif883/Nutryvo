@@ -74,7 +74,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-            <ul className="flex items-center gap-6 font-palyFair font-medium text-lg">
+            <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
             {navItems?.map((nav) => (
               <li key={nav?.id}>
                 <Link
