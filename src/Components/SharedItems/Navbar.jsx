@@ -10,9 +10,9 @@ const Navbar = () => {
 
     const navItems = [
         { id: 1, name: "Home", route: "/" },
-        { id: 3, name: "Meal Plans", route: "/meal-plans" },
-        { id: 8, name: "Shop", route: "/shop" },
         { id: 4, name: "Track Nutrition", route: "/track" },
+        { id: 8, name: "Shop", route: "/shop" },
+        { id: 3, name: "Meal Plans", route: "/meal-plans" },
         { id: 5, name: "Blog", route: "/blog" },
         { id: 6, name: "About", route: "/about" },
         { id: 7, name: "Contact", route: "/contact" }
@@ -74,7 +74,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-            <ul className="flex items-center gap-6 font-palyFair font-medium text-md">
+            <ul className="flex items-center gap-6 font-palyFair font-medium text-lg">
             {navItems?.map((nav) => (
               <li key={nav?.id}>
                 <Link

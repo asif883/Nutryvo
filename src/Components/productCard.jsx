@@ -80,7 +80,7 @@ const productCard = ({product}) => {
               <h3 className='text-lg md:text-xl font-semibold font-barlow'>{name}</h3>
               <p className='text-gray-700 font-barlow'>Price: {price}/kg</p>
            </div>
-           <div className='absolute top-1.5 -right-2 md:-right-5'>
+           <div className='absolute top-0.5 -right-2 md:right-3'>
             <button onClick={() => handleCartData(singleUser?.email)} className='cursor-pointer hover:text-green-600'><MdOutlineShoppingCart size={24}/></button>
            </div>
        </div>
