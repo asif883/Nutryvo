@@ -2,13 +2,15 @@
 import Link from "next/link";
 import '../../CSS/font.css'
 import { usePathname } from "next/navigation";
-// import { useSession } from "next-auth/react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
+import { useAuth } from "@/app/hooks/useAuth";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const Navbar = () => {
-    // const { data: session, status } = useSession();
-
+    const { session , isLoading } = useAuth()
+    const user = session?.user
+  console.log(user);
     const pathname = usePathname();
 
     const navItems = [
@@ -65,11 +67,11 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-0.5 md:gap-1.5">
             <img className="w-8 md:w-12 h-8 md:h-12 rounded-full" src="/assets/bg-remove-logo.png" alt="logo" />
           <Link
             href="/"
-            className="font-palyFair text-3xl md:text-4xl font-bold text-green-600 tracking-wide"
+            className="font-palyFair text-xl md:text-4xl font-bold text-green-600 tracking-wide"
           > 
             Nutryvo
           </Link>
@@ -96,13 +98,22 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-           <Link href={'/dashboard/profile'} className="mr-4 text-green-600">
-                <FaRegUserCircle size={24}/>
+           <Link href={'/dashboard/profile'} className="text-green-600 mr-1.5 md:mr-3">
+                <FaRegUserCircle className="text-xl md:text-2xl"/>
             </Link>
-            <Link href={'/dashboard/cart'} className="text-green-600">
-                <TiShoppingCart size={28}/>
+            <Link href={'/dashboard/cart'} className="text-green-600 mr-1.5 md:mr-3">
+                <TiShoppingCart className="text-2xl md:text-3xl"/>
             </Link>
-
+            {
+              isLoading ? <span className="loading loading-spinner text-success"></span>:
+              <>
+               {
+                 user ? <Link href={'/dashboard'}><MdOutlineDashboard className="text-xl md:text-2xl text-green-600"/></Link> 
+                 :
+                 <Link className="px-2.5 py-1 bg-green-600 text-white  hover:bg-green-700 text-xs md:text-lg" href={'/login'}>Sign In</Link>
+               }
+              </>
+            }
         </div>
       </div>
     </div>
