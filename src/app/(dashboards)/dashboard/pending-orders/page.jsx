@@ -1,4 +1,5 @@
 "use client"
+import useUserData from '@/app/hooks/useUserData';
 import Loading from '@/Components/SharedItems/Loading';
 import { fetchData } from 'next-auth/client/_utils';
 import React, { useEffect, useState } from 'react';
@@ -7,7 +8,8 @@ import Swal from 'sweetalert2';
 const page = () => {
     const [orders , setOrders] = useState([])
     const [loading , setLoading] = useState(true)
-  
+    const {singleUser} = useUserData()
+
     const fetchData = async () => {
         try {
         const res = await fetch('/api/pending-orders');
@@ -58,8 +60,11 @@ const page = () => {
             });
         }
     };
-
-
+     
+    if(singleUser?.role !== "admin"){
+        return "THIS PAGE IS ONLY FOR ADMIN"
+    }
+  
     return (
         <div>
             <h1 className='text-center text-2xl font-semibold text-green-600 mb-5'>Orders Details</h1>

@@ -134,7 +134,7 @@ const handleDelete = async (id) => {
                     <div className="card-actions justify-end">
                       <button
                        onClick={()=> handleDelete(item?._id)}
-                       className="ml-2 border border-green-300 px-2 py-1 rounded-md text-green-600 hover:text-white hover:bg-green-600 font-semibold cursor-pointer">
+                       className="ml-2 border border-red-300 px-2 py-1 rounded-md text-red-600 hover:text-white hover:bg-red-600 font-semibold cursor-pointer">
                         Remove
                       </button>
                     </div>
