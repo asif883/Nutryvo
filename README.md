@@ -12,7 +12,7 @@ Nutryvo is a modern, user-focused nutrition and wellness platform designed to pr
 
 - 🌱 Personalized Meal Plans (Basic & Professional)
 - 🛒 Dry Food Product Marketplace
-- 💬 Real-time AI Chatbot (Coming Soon)
+- 💬 Real-time AI Chatbot 
 - 🔐 Secure Authentication (NextAuth)
 - ⚡ Fast, responsive UI with Next.js & Tailwind CSS
 - 📦 Category-based filtering & product search
@@ -26,9 +26,9 @@ Nutryvo is a modern, user-focused nutrition and wellness platform designed to pr
 |----------------|---------------------------------|
 | Frontend       | Next.js, Tailwind CSS           |
 | Backend        | Node.js, API Routes (Next.js)   |
-| Authentication | Next Auth                   |
-| AI Chatbot     | (planing)           |
-| Database       | MongoDB       |
+| Authentication | Next Auth                       |
+| AI Chatbot     | GROQ AI                         |
+| Database       | MongoDB                         |
 | Deployment     | Vercel                          |
 
 ---
@@ -78,7 +78,7 @@ cd nutryvo
 ### ✅ Roadmap:
 - [x] Basic & Professional meal plans
 - [x] Product filtering and category UI
-- [ ] AI Chatbot Integration (Coming Soon)
+- [x] AI Chatbot Integration (Coming Soon)
 - [x] Admin Panel 
 - [ ] Advanced analytics for user habits (Coming Soon)
 - [x] Community and blog features
