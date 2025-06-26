@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/SharedItems/Navbar";
 import Footer from "@/Components/SharedItems/Footer";
 import AuthProvider from "@/context/AuthProvider";
+import ChatbotWidget from "@/Components/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
           <AuthProvider>
             <Navbar/>
             <div className="min-h-screen">
+              <ChatbotWidget/>
               {children}
             </div>
             <Footer/>
